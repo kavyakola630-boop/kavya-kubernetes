@@ -8,9 +8,9 @@ spec:
       image: nginx:1.29
       ports:
         - containerPort: 80
-  ephemeralcontainers:
+  ephemeralContainers:
     - name: mydebug-container
       image: busybox
       stdin: true
-      targetcontainername: my-main-container
+      targetContainername: my-main-container
       tty: true
