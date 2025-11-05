@@ -1,0 +1,16 @@
+FROM maven:3.9.9-eclipse-temurin-21 AS build
+WORKDIR /appjava
+ADD . /appjava
+RUN mvn clean package 
+FROM eclipse-temurin:21-jdk AS runtime
+LABEL project="java project"
+LABEL author="devopsteam"
+ENV project=prod
+ARG myownuser=kavya
+ARG homedir=/usr/share/kavya
+RUN useradd -m -d ${homedir} -s /bin/sh ${myownuser}
+USER ${myownuser}
+WORKDIR /devops
+COPY --from=build /appjava/target/*.jar kavya.jar
+EXPOSE 8080
+CMD ["java", "-jar", "kavya.jar"]
