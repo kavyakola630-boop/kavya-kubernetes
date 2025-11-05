@@ -20,6 +20,3 @@ spec:
       command:
         - sleep
         - "5s"
-
-
-           
