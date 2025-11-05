@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo-pod 
+spec: 
+  containers:
+    - name: myfirst-container 
+      image: kolakavya/javarepo:javadevenv
+      ports: 
+        - containerPort: 8080 
+          protocol: TCP 
