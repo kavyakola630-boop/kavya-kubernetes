@@ -12,5 +12,5 @@ spec:
     - name: mydebug-container
       image: busybox
       stdin: true
-      targetContainername: my-main-container
+      targetContainerName: my-main-container
       tty: true
