@@ -6,5 +6,5 @@ spec:
   type: LoadBalancer
   selector:
     app: dummypod
-  ports: 
+  ports:
     - port: 5001
