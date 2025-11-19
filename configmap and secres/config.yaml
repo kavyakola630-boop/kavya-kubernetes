@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mydp-config
+  namespace: dev
+data:
+  ECR_URL: "https://ECR.com"

@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydp
+  labels:
+    app: java
+  namespace: dev
+
+spec:
+  replicas: 5
+  minReadySeconds: 5
+
+  selector:
+    matchLabels:
+      app: myapp
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: my-container
+          image: longflew/ingress:YELLOWPAGE
+          volumeMounts:
+            - name: myconfig
+              mountPath: /usr/share/nginx/html
+          ports:
+            - containerPort: 80
+
+      volumes:
+        - name: myconfig
+          configMap:
+            name: mydp-config
+        - name: mysecret
+          secret:
+            secretName: mydp-sc
